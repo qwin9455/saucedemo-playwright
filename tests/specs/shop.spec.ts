@@ -17,7 +17,7 @@ test.describe('Shop Verification', () => {
         expect(productDetails.price).not.toBeNull();
     });
 
-    test('Validate successful adding of product to cart', async ({ open }) => {
+    test('Validate correct product quantity is added to cart', async ({ open }) => {
         const badge = await open(ShopPage)
             .then(_ => _.getInventoryItemByIndex(Math.floor(Math.random() * 6)))
             .then(_ => _.clickAddToCartButton())

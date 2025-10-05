@@ -8,7 +8,7 @@ test.describe('Cart Verification', () => {
         await open(LoginPage).then(_ => _.login(testData.username, testData.password));
     });
 
-    test('Validate adding a random product to cart', async ({ open }) => {
+    test('Validate successful adding a random product to cart', async ({ open }) => {
         const shopPage = await open(ShopPage);
         const product = shopPage.getInventoryItemByIndex(Math.floor(Math.random() * 6));
         const productDetails = await product.getProductDetails();

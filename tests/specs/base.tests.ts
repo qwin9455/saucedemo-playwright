@@ -15,7 +15,7 @@ export const test = base.extend<{ open: Open, testData: TestData }>({
     await page.goto(baseURL!);
     await use(openFactory(page));
   },
-  testData: async ({ }, use) => {
+  testData: async (_, use) => {
     await use({ username: 'standard_user', password: 'secret_sauce', firstName: 'Myka', lastName: 'Tolentino', postalCode: '2148' });
   }
 });

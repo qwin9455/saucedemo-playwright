@@ -17,11 +17,18 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Create .env file
+      run: |
+         echo "PLAYWRIGHT_URL=https://www.saucedemo.com/" >> .env
+         echo "PLAYWRIGHT_BROWSER=chromium" >> .env
+         echo "PLAYWRIGHT_HEADLESS=true" >> .env
+    - name: Run lint
+      run: npm run lint
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npm test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
         path: playwright-report/
-        retention-days: 30
+        retention-days: 7

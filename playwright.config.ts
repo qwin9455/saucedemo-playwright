@@ -11,34 +11,27 @@ export default defineConfig({
     ['html', { open: 'never' }],
     ['junit', { outputFile: 'test-results/results.xml' }]
   ],
+  use: {
+    baseURL: PLAYWRIGHT_URL,
+    browserName: PLAYWRIGHT_BROWSER,
+    headless: PLAYWRIGHT_HEADLESS,
+    screenshot: 'only-on-failure',
+    trace: 'on'
+  },
   projects: [
     {
       name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-      use: {
-        baseURL: PLAYWRIGHT_URL
-      }
+      testMatch: /.*\.setup\.ts/
     },
     {
       testMatch: /login.spec.ts/,
-      use: {
-        baseURL: PLAYWRIGHT_URL,
-        browserName: PLAYWRIGHT_BROWSER,
-        headless: PLAYWRIGHT_HEADLESS,
-        screenshot: 'only-on-failure',
-        trace: 'on'
-      },
     },
     {
       testMatch: /.*\.spec\.ts/,
       testIgnore: /login.spec.ts/,
       use: {
         baseURL: PLAYWRIGHT_URL + 'inventory.html',
-        browserName: PLAYWRIGHT_BROWSER,
-        headless: PLAYWRIGHT_HEADLESS,
-        screenshot: 'only-on-failure',
-        storageState: 'playwright/.auth/user.json',
-        trace: 'on'
+        storageState: 'playwright/.auth/user.json'
       },
       dependencies: ['setup'],
     },

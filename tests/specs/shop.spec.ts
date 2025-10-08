@@ -1,12 +1,8 @@
-import { LoginPage, ShopPage } from '@pages';
+import { ShopPage } from '@pages';
 import { test, expect } from './base.tests';
 
 
 test.describe('Shop Verification', () => {
-
-    test.beforeEach(async ({ open, testData }) => {
-        await open(LoginPage).then(_ => _.login(testData.username, testData.password));
-    });
 
     test('Validate random product details', async ({ open }) => {
         const productDetails = await open(ShopPage)

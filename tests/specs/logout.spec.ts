@@ -1,11 +1,7 @@
-import { LoginPage, ShopPage } from '@pages';
+import { ShopPage } from '@pages';
 import { test, expect } from './base.tests';
 
 test.describe('Logout Verification', () => {
-    test.beforeEach(async ({ open, testData }) => {
-        await open(LoginPage).then(_ => _.login(testData.username, testData.password));
-    });
-
     test('Validate successful logout', async ({ open }) => {
         const loginLogo = await open(ShopPage)
             .then(_ => _.clickMenuButton())

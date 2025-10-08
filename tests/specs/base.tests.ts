@@ -10,8 +10,8 @@ interface TestData {
 }
 
 export const test = base.extend<{ open: Open, testData: TestData }>({
-  open: async ({ page, context, baseURL }, use) => {
-    await context.clearCookies();
+  open: async ({ page, baseURL }, use) => {
+    // await context.clearCookies();
     await page.goto(baseURL!);
     await use(openFactory(page));
   },

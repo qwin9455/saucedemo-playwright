@@ -1,12 +1,8 @@
-import { LoginPage, ShopPage } from '@pages';
+import { ShopPage } from '@pages';
 import { test, expect } from './base.tests';
 
 
 test.describe('Purchase Verification', () => {
-
-    test.beforeEach(async ({ open, testData }) => {
-        await open(LoginPage).then(_ => _.login(testData.username, testData.password));
-    });
 
     test('Validate successful purchase of random product', async ({ open, testData }) => {
         const shopPage = await open(ShopPage);
